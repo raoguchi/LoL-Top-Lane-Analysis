@@ -30,21 +30,7 @@ As for individual statistics, we will examine, the damage, damage taken, the vis
 
 ## Cleaning and EDA
 
-<style>
-table th:first-of-type {
-    width: 10%;
-}
-table th:nth-of-type(2) {
-    width: 10%;
-}
-table th:nth-of-type(3) {
-    width: 50%;
-}
-table th:nth-of-type(4) {
-    width: 30%;
-}
-</style>
-
+<div style = "overflow-x:auto; width 400px;">
 
 | gameid                | teamname                      | is_malphite   | champion   |   result |   kills |   deaths |   assists |   damagetochampions |   visionscore |   total cs |   totalgold |   damagetaken | Champ Type   |
 |:----------------------|:------------------------------|:--------------|:-----------|---------:|--------:|---------:|----------:|--------------------:|--------------:|-----------:|------------:|--------------:|:-------------|
@@ -54,7 +40,7 @@ table th:nth-of-type(4) {
 | ESPORTSTMNT01_2690219 | Liiv SANDBOX Challengers      | False         | Gangplank  |        1 |       2 |        2 |         6 |               23632 |            30 |        341 |       17877 |         17752 | AD           |
 | 8401-8401_game_1      | Oh My God                     | False         | Gwen       |        1 |       5 |        0 |         4 |               11188 |            23 |        172 |        9123 |         13327 | AP           | 
 
-
+</div>
 
 At this point, we have subset data our anaysis purposes. However, I would like to take one step further and classify each champion based off of the "type" of champion they are.
 - For example, Malphite is a Tank Champion, Vayne is an AD (Attack Damage) Champion, and Lilia is an AP (Ability Power) Champion.
