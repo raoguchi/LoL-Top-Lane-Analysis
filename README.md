@@ -30,7 +30,7 @@ As for individual statistics, we will examine, the damage, damage taken, the vis
 
 ## Cleaning and EDA
 
-<table style ="width:300px; height:200px; border:1px">
+<table style ="width:100px; height:200px; border:1px">
 <thead>
 <tr><th>is_malphite  </th><th>champion  </th><th style="text-align: right;">  result</th><th style="text-align: right;">  kills</th><th style="text-align: right;">  deaths</th><th style="text-align: right;">  assists</th><th style="text-align: right;">  damagetochampions</th><th style="text-align: right;">  visionscore</th><th style="text-align: right;">  total cs</th><th style="text-align: right;">  totalgold</th><th style="text-align: right;">  damagetaken</th></tr>
 </thead>
@@ -48,7 +48,7 @@ At this point, we have subset data our anaysis purposes. However, I would like t
 - For example, Malphite is a Tank Champion, Vayne is an AD (Attack Damage) Champion, and Lilia is an AP (Ability Power) Champion.
 - However, this is an subjective classification based off of the typical build path of the Season 12 Meta. 
 
-<table style="width:300px; height:200px; border:1px">
+<table style="width:100px; height:200px; border:1px">
 <thead>
 <tr><th>is_malphite  </th><th>champion  </th><th style="text-align: right;">  result</th><th style="text-align: right;">  kills</th><th style="text-align: right;">  deaths</th><th style="text-align: right;">  assists</th><th style="text-align: right;">  damagetochampions</th><th style="text-align: right;">  visionscore</th><th style="text-align: right;">  total cs</th><th style="text-align: right;">  totalgold</th><th style="text-align: right;">  damagetaken</th><th>Champ Type  </th></tr>
 </thead>
@@ -70,7 +70,7 @@ These are the team level objectives we will be examining:
 - Inhibitors
 - Total Objectives (Sum of the 5 above)
 
-<table style="width:300px; height:200px; border:1px">
+<table style="width:100px; height:200px; border:1px">
 <thead>
 <tr><th style="text-align: right;">  </th><th>gameid               </th><th>teamname                     </th><th style="text-align: right;">  dragons</th><th style="text-align: right;">  heralds</th><th style="text-align: right;">  barons</th><th style="text-align: right;">  towers</th><th style="text-align: right;">  inhibitors</th></tr>
 </thead>
@@ -86,7 +86,7 @@ These are the team level objectives we will be examining:
 
 So to predict the if Malphite has an influence on objective play, we need to narrow down the cases where malphite was played and not played. Then, we select the player level data as we mentioned in the introduction for the two relevant datasets. However, to ensure we can predict the value of the objectives, we need to attribute team level data to the players. But as this is only displayed in the last 2 rows of each subset, we can merge this data based off of the gameid and teamname. But to make sure the merge function does not mess with our dataset, we drop every duplicate based off of gameid or both gameid and teamname.
 
-<table style="width:300px; height:200px; border:1px">
+<table style="width:100px; height:200px; border:1px">
 <thead>
 <tr><th>is_malphite  </th><th>champion  </th><th style="text-align: right;">  result</th><th style="text-align: right;">  kills</th><th style="text-align: right;">  deaths</th><th style="text-align: right;">  assists</th><th style="text-align: right;">  damagetochampions</th><th style="text-align: right;">  visionscore</th><th style="text-align: right;">  total cs</th><th style="text-align: right;">  totalgold</th><th style="text-align: right;">  damagetaken</th><th>Champ Type  </th><th style="text-align: right;">  dragons</th><th style="text-align: right;">  heralds</th><th style="text-align: right;">  barons</th><th style="text-align: right;">  towers</th><th style="text-align: right;">  inhibitors</th><th style="text-align: right;">  total objs</th></tr>
 </thead>
