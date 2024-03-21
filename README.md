@@ -60,7 +60,7 @@ These are the team level objectives we will be examining:
 - Inhibitors
 - Total Objectives (Sum of the 5 above)
 
-<table>
+<table style="width: 50%; border-collapse: collapse;">
 <thead>
 <tr><th>is_malphite  </th><th>champion  </th><th style="text-align: right;">  result</th><th style="text-align: right;">  kills</th><th style="text-align: right;">  deaths</th><th style="text-align: right;">  assists</th><th style="text-align: right;">  damagetochampions</th><th style="text-align: right;">  visionscore</th><th style="text-align: right;">  total cs</th><th style="text-align: right;">  totalgold</th><th style="text-align: right;">  damagetaken</th><th>Champ Type  </th><th style="text-align: right;">  dragons</th><th style="text-align: right;">  heralds</th><th style="text-align: right;">  barons</th><th style="text-align: right;">  towers</th><th style="text-align: right;">  inhibitors</th><th style="text-align: right;">  total objs</th></tr>
 </thead>
