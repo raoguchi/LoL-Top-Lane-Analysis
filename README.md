@@ -1,11 +1,12 @@
-# Is Malphite Broken as a Top Laner?
+
+## Is Malphite Broken as a Top Laner? (What are the necessary Top Lane Win Conditions?)
 by Ryosuke (Alex) Oguchi
 
 ## Introduction
 
 The dataset we are examining here is the 2022 data for League of Legends Esports Matches. The dataset is subset in groups of 12, which the corresponding match ID. However, as there are only 10 players in each match (5 per team), there are 10 rows about player data and 2 rows about team data. When I claim a champ is "broken", there are various metrics we can use to test this claim. Since this is examining perfromance based data on champions/players, any objective based data will not be part of our model. Moreover, objective based data is a team performance statistic that is "Missing by Design" for individual statistics. Nevertheless, we can assume good top laner performance will contribute to the overall objective completion for each team. Although this may be contingent on the other player's performance (especially the jungler), lane pressure will create a situation where the wave is shoved in due to power difference between the two players. This allows the jungler to take claim to the Rift Herald which is directly related to taking towers.
 
-Just as a discretion, Malphite's build path tends to take one of two paths: Ability Power and Tank. As the latter suggests, the Tank build focuses on building up Damage Resistance by sacrificing damage output. The key reason why this question is being asked is simply due to this Ultimate Ability.
+Just as a discretion, Malphite's build path tends to take one of two paths: Ability Power and Tank. As the latter suggests, the Tank build focuses on building up Damage Resistance by sacrificing damage output. For our purposes, we will take Malphite to be a tank as this is what many players built during the Season 12 meta.
 
 As described in the official League of Legends Website, it is described as follows: "UNSTOPPABLE FORCE: Malphite launches himself to a location at high speed, damaging enemies and knocking them into the air."
 
@@ -18,7 +19,7 @@ src="https://www.youtube.com/embed/dQGwo_MA_3c?si=OwPtOWG0xlDqKKEo" title="YouTu
 
 Now that I have established Malphite is not fair, it is necessary to narrow down what type of Data is relevant for analysis. What we are trying to answer is what is the predicted amount of total objectives (dragons, heralds, barons, towards, inhibitors, etc.) that a team will get based off the existence of an "effective" Malphite?
 
-As for individual statistics, we will examine, the damage, damage taken, the vision score, the cs, the kills, the deaths, the assists, and objectives.
+As for individual statistics, we will examine, damage, damage taken, vision score, cs, kills, deaths, assists, and objectives.
 
 - Damage to Champions: How much damage a champion has dealt to other champions in total
 - Damage Taken: How much damage a champion has taken in total
@@ -91,7 +92,7 @@ These are the team level objectives we will be examining:
 </div>
 
 
-So to predict the if Malphite has an influence on objective play, we need to narrow down the cases where malphite was played and not played. Then, we select the player level data as we mentioned in the introduction for the two relevant datasets. However, to ensure we can predict the value of the objectives, we need to attribute team level data to the players. But as this is only displayed in the last 2 rows of each subset, we can merge this data based off of the gameid and teamname. But to make sure the merge function does not mess with our dataset, we drop every duplicate based off of gameid or both gameid and teamname.
+So to predict the if Malphite has an influence on objective play, we need to narrow down the cases where malphite was played and not played. Then, we select the player level data as we mentioned in the introduction for the two relevant datasets. However, to ensure we can view the total objective count, we need to attribute team level data to the players. But as this is only displayed in the last 2 rows of each subset, we can merge this data based off of the gameid and teamname. But to make sure the merge function does not mess with our dataset, we drop every duplicate based off of gameid or both gameid and teamname.
 
 <div style='overflow-x: auto;'>
 <table>
@@ -133,7 +134,7 @@ However, this might not tell the full story as the performance of Malphite might
   frameborder="0"
 ></iframe>
 
-Although the meaning of this data is slightly hard to interpret due to the mass amount of data, there seems to be a reasonable conclusion that I can make. Compared to the rest of the dataset, Malphite does not need ot deal as much damage to enemy champions (or be the main carry) to have an influence on objective play. This average clusters itself around 12k-15k where as the average top laner tends ot deal around 20k+ in champion damage.
+Although the meaning of this data is slightly hard to interpret due to the mass amount of data, there seems to be a reasonable conclusion that I can make. Compared to the rest of the dataset, Malphite does not need to deal as much damage to enemy champions (or be the main carry) to have an influence on objective play. This average clusters itself around 12k-15k where as the average top laner tends to deal around 20k+ in champion damage.
 
 <iframe
   src="assets/scatter2.html"
@@ -322,7 +323,7 @@ After conducting 1000 repetitions of our permutation, our observed difference wa
 </tbody>
 </table>
 
-Overall, the observed difference tends to be a rare occurence. Hence, we must reject the null hypothesis and claim that Malphite actually appears to give players a disadvtange in terms of objective claims. However, this is not an outright claim. This is because there may be different factors that Malphite players have that result in the overall gameplay disadvantage.
+Overall, the observed difference tends to be a rare occurence. This is seen as our p_value is 0.004 (basically zero). By testing at a significance of 5 percent and 2 tails, the p_value has significance. Hence, we must reject the null hypothesis and claim that Malphite the distribution looks different from their counterparts. However, this is not an outright claim. This is because there may be different factors that Malphite players have that result in the overall gameplay disadvantage.
 
 ## Framing a Prediction Problem
 
@@ -335,7 +336,7 @@ We deliberately chose to ignore KDA (Kills Deaths Assists for future reference) 
 For our baseline model, we will look simply at Damage to Champs and Champ Type as our exogeneous variables predict how the overall result of the game.
 
 - The Damage to Champs column will remain as is because it is a quantitative, continous variable.
-- Alternatively, the Champ Type will be One Hot Encoded as they are categorical nominal varaibles.
+- Alternatively, the Champ Type will be One Hot Encoded as it is a categorical nominal variable.
 
 To view the performance, we will look at the accuracy of the model and compare it to the the actual data vs predicted values from out classification model.
 
@@ -374,13 +375,13 @@ Top pivot from our baseline model, the new features we are considering is the fo
 - Baron Slayed
 
 
-To reason with my I did not use towers, inhibitors, or total objectives is because these will provide uninformative result. The objective of playing a game in league of legends is to destroy the other team's "nexus" or core. The nexus is protected by 3 outer towers, 3 inner towers, 3 inhibitor towers, and 2 nexus towers. Therefore, if a team has a high towers destroyed or inhibitor's destroyed count, it is most likely that these teams will win.
+To reason with my I did not use towers, inhibitors, or total objectives is because these will provide uninformative result. The objective of playing a game in league of legends is to destroy the other team's "nexus" or core. The nexus is protected by 3 outer towers, 3 inner towers, 3 inhibitor towers, 3 inhibitors, and 2 nexus towers. Therefore, if a team has a high towers destroyed or inhibitor's destroyed count, it is most likely that these teams will win.
 
-As for the hyperparameters, this will be tuned based off of the available hyperparamters in a RandomForestClassifier. I have specifically chosen criterion, depth, min_split as this will create 140 unique combinations that the model will look to choose from.
+As for the hyperparameters, this will be tuned based off of the available hyperparamters in a RandomForestClassifier. I have specifically chosen criterion, min_split, and depth as this will create 140 unique combinations that the model will look to choose from.
 
-The idea behind criterion is that GridSearch uses gini as its default form. The simple change to entropy is not meant to reveal something new, it is a mere safeguard there is an off chance that accuracy will improve.
-The minimum number of sample is being adjusted to test against model variance. The greater the value, the lower the variance the model will have.
-As for the max_depth, it is about creating more splits as the depth increases. So if there are any points of overlaps, I believe that small shifts in the data will be more accurately classified.
+- The idea behind criterion is that GridSearch uses gini as its default form. The simple change to entropy is not meant to reveal something new, it is a mere safeguard as there is an off chance that accuracy will improve.
+- The minimum number of samples is being adjusted to test against model variance. The greater the value, the lower the variance the model will have.
+- As for the max_depth, it is about creating more splits as the depth increases. So if there are any points of overlaps, I believe that small shifts in the data will be more accurately classified.
 
 <table>
 <thead>
@@ -392,11 +393,11 @@ As for the max_depth, it is about creating more splits as the depth increases. S
 </tbody>
 </table>
 
-On first glance, the distribution of wins/losses are where the model needs to be. There is about a percent margin of error, but that is much better in terms of the baseline model. As for your accuracy, the trees appears to be overfitting to our training data as with most cases of classifier models. Nevertheless, there is about a 30 percent boost in both the training and testing accuracy. Moreover, we see the accuracy between the two datasets is about 3-4 percent so we are going to say performance on unseen data will not be as bad.
+On first glance, the distribution of wins/losses are where the model needs to be. There is about a percent margin of error, but that is much better in terms of the baseline model. As for your accuracy, the trees appears to be overfitting to our training data as with most cases of classifier models. Nevertheless, there is about a 30 percent boost in both the training and testing accuracy. Moreover, we see the accuracy between the training and testing datasets are about 3-4 percent so we are going to say performance on unseen data will not be as bad.
 
 <iframe src="assets/cm2.png" width="800" height="600" frameborder="0"></iframe>
 
-Relative to the confusion matrix in the baselinemodel, we see there is a much greater number of true positives and true negatives. This is also associted with greater accuracy. The key issue in the base model is that it containted a fair amount of false positives that harmed the precision. As the relative amount of false positives and false negatives are equal, the recall and preicison is also close to being equal.
+Relative to the confusion matrix in the baseline Model, we see there is a much greater number of true positives and true negatives. This is also associated with greater accuracy. The key issue in the base model is that it contained a fair amount of false positives that harmed the precision. Here, as the relative amount of false positives and false negatives are equal, the recall and preicison is also close to being equal.
 
 ## Fairness Analysis
 
@@ -457,4 +458,4 @@ The observed discovery rate here is 7.7 percent; now by conducting a hypothesis 
 
 With this test, our Null Hypothesis is that the model is fair and the False Discovery rate is the same for both groups. And the unfair case is when the false discovery rate is different. 
 
-As we see in the graph above, the false discovery rate of 0.07 has statistic insignificance. Taking a signifiance level of 5% or 2.5% on each side, we see the p value is extremely small at 0. Therefore, we reject the null hypothesis. Or in other words, our model here is not fair for low and high damage top laners.
+As we see in the graph above, the false discovery rate of 6 percent (with 1 percent margins) has statistical significance. Taking a signifiance level of 5% or 2.5% on each side, we see the p value is extremely small at 0. Therefore, we reject the null hypothesis. Or in other words, our model here is not fair for low and high damage top laners.
