@@ -1,5 +1,5 @@
 
-#
+
 
 ## Is Malphite Broken as a Top Laner? (What are the necessary Top Lane Win Conditions?)
 by Ryosuke (Alex) Oguchi
