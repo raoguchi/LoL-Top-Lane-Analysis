@@ -1,3 +1,4 @@
+# Is Malphite Broken as a Top Laner?
 by Ryosuke (Alex) Oguchi
 
 ## Introduction
@@ -106,3 +107,198 @@ So to predict the if Malphite has an influence on objective play, we need to nar
 </tbody>
 </table>
 </div>
+
+
+## Univariate Analysis
+
+Now it is time to examine how many total objectives are taken on average between the Malphite and No Malphite Groups.
+
+<iframe
+  src="assets/boxplot.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+It appears here that based that range of total objective tends to differ widely based off of the existence of a Malphite. Overall, the average and maximum of total objectives obtained tends to lean towards the group with no Malphite in the top lane.
+
+## Bivariate Analysis
+
+However, this might not tell the full story as the performance of Malphite might greatly influence the total objectives captured. (This perhaps may just be stating an obvious fact)
+
+<iframe
+  src="assets/scatter1.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+Although the meaning of this data is slightly hard to interpret due to the mass amount of data, there seems to be a reasonable conclusion that I can make. Compared to the rest of the dataset, Malphite does not need ot deal as much damage to enemy champions (or be the main carry) to have an influence on objective play. This average clusters itself around 12k-15k where as the average top laner tends ot deal around 20k+ in champion damage.
+
+<iframe
+  src="assets/scatter2.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+Here is an interpretation based off of champ type. It is quite clear that most players play AD top laners. Althought visually hard to interpret, there seems to a positive correlation between damage and total objectives taken. This can be recognized as the spread tends to incraese as you increase the total objective value.
+
+<table>
+<thead>
+<tr><th>     </th><th style="text-align: right;">  Champ Type</th></tr>
+</thead>
+<tbody>
+<tr><td>AD   </td><td style="text-align: right;">    0.424585</td></tr>
+<tr><td>Tank </td><td style="text-align: right;">    0.251181</td></tr>
+<tr><td>AP   </td><td style="text-align: right;">    0.213787</td></tr>
+<tr><td>Other</td><td style="text-align: right;">    0.110447</td></tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr><th>Champ Type  </th><th style="text-align: right;">  total objs</th></tr>
+</thead>
+<tbody>
+<tr><td>AD          </td><td style="text-align: right;">     10.5944</td></tr>
+<tr><td>AP          </td><td style="text-align: right;">     10.2303</td></tr>
+<tr><td>Other       </td><td style="text-align: right;">     10.4066</td></tr>
+<tr><td>Tank        </td><td style="text-align: right;">     10.0904</td></tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr><th>Champ Type  </th><th style="text-align: right;">  damagetochampions</th></tr>
+</thead>
+<tbody>
+<tr><td>AD          </td><td style="text-align: right;">            16185  </td></tr>
+<tr><td>AP          </td><td style="text-align: right;">            15846.1</td></tr>
+<tr><td>Other       </td><td style="text-align: right;">            15388.2</td></tr>
+<tr><td>Tank        </td><td style="text-align: right;">            14233.9</td></tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr><th>Champ Type  </th><th style="text-align: right;">  totalgold</th></tr>
+</thead>
+<tbody>
+<tr><td>AD          </td><td style="text-align: right;">    12858.5</td></tr>
+<tr><td>AP          </td><td style="text-align: right;">    12060.5</td></tr>
+<tr><td>Other       </td><td style="text-align: right;">    11992  </td></tr>
+<tr><td>Tank        </td><td style="text-align: right;">    11700.5</td></tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr><th>Champ Type  </th><th style="text-align: right;">  heralds</th></tr>
+</thead>
+<tbody>
+<tr><td>AD          </td><td style="text-align: right;"> 0.819574</td></tr>
+<tr><td>AP          </td><td style="text-align: right;"> 0.775406</td></tr>
+<tr><td>Other       </td><td style="text-align: right;"> 0.848995</td></tr>
+<tr><td>Tank        </td><td style="text-align: right;"> 0.805466</td></tr>
+</tbody>
+</table>
+
+Between the two charts above, there acutally seems to be only a small, positive correlation between the amount of total objectives and top laners. Assuming the AD top laners are the meta due to the overwhelming pick rate, we would expect there can be a key reason to do so.
+
+- Damage wise, we would expect AD champs to be ahead of tanks, this seems to hold true.
+- However, based off of objectives taken, there is no noticeable change.
+- As for gold, there is there is a range of 1100, which is actually not enough to buy one item in the game.
+- However, there seems to be a noticable difference in average Heralds per game. This can most likely be attributed to the AD laner's ability to be more impactful in Skirmishes. As noticed in the lower mean value in AP champs, they are relatively weak during the 9:50 minutue mark, which indicates that it is probably better to have Tanks or AD champs in the early game.
+
+## Assessment of Missingness
+
+Missingness Analysis: Before, the game_data dataframe had Missing Values for certain objectives that I imputed with zeros. This is assuming that the original dataset considered missing values have zeros. Along these lines, we are assuming these are missing by design. However, now we are going to see if missingness has any correlation between the type of champ a laner plays. We will be specifically looking at the Rift Herald as this spawns during the laning phase at 9.5 minutes.
+
+<table>
+<thead>
+<tr><th style="text-align: right;">  </th><th>Champ Type  </th><th style="text-align: right;">  heralds</th><th>heralds_missing  </th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: right;"> 0</td><td>AD          </td><td style="text-align: right;">        2</td><td>False            </td></tr>
+<tr><td style="text-align: right;"> 1</td><td>AP          </td><td style="text-align: right;">        0</td><td>False            </td></tr>
+<tr><td style="text-align: right;"> 2</td><td>AP          </td><td style="text-align: right;">        1</td><td>False            </td></tr>
+<tr><td style="text-align: right;"> 3</td><td>AD          </td><td style="text-align: right;">        1</td><td>False            </td></tr>
+<tr><td style="text-align: right;"> 4</td><td>AP          </td><td style="text-align: right;">      nan</td><td>True             </td></tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr><th>Champ Type  </th><th style="text-align: right;">  heralds_missing = False</th><th style="text-align: right;">  heralds_missing = True</th></tr>
+</thead>
+<tbody>
+<tr><td>AD          </td><td style="text-align: right;">                 0.428847</td><td style="text-align: right;">                0.40534 </td></tr>
+<tr><td>AP          </td><td style="text-align: right;">                 0.20398 </td><td style="text-align: right;">                0.25673 </td></tr>
+<tr><td>Other       </td><td style="text-align: right;">                 0.109637</td><td style="text-align: right;">                0.114467</td></tr>
+<tr><td>Tank        </td><td style="text-align: right;">                 0.257536</td><td style="text-align: right;">                0.223462</td></tr>
+</tbody>
+</table>
+
+Overall, the missingness seems to be roughly the same across the type of champ. However, there is an underlying difference between the AP champs having a missing value for taking the rift herald. Hence, there is a need to test if the missiness is Not Missing at Random or Missing Completely at Random. I believe that the missingness of the herald is actually dependent on the champ type. This is because AP champs have low combat impact in early states of the game compared to AD/Tank laners and junglers.
+
+After conducting our permutation analysis, p value was 0, and observed TVD was 0.06, we have reason to state that the missingness is actually dependent on the type of top lane champion. This can be supported with the distribution graph below. Hence, we are going to claim missingness here is Missing at Random. 
+
+<iframe
+  src="assets/TVD1.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+Alternatively, we will check if Missingness will be dependent on a more gameplay based data such as the amount of deaths.
+
+<table>
+<thead>
+<tr><th style="text-align: right;">  deaths</th><th style="text-align: right;">  heralds_missing = False</th><th style="text-align: right;">  heralds_missing = True</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: right;">       0</td><td style="text-align: right;">              0.100827   </td><td style="text-align: right;">             0.0906106  </td></tr>
+<tr><td style="text-align: right;">       1</td><td style="text-align: right;">              0.159531   </td><td style="text-align: right;">             0.16021    </td></tr>
+<tr><td style="text-align: right;">       2</td><td style="text-align: right;">              0.188982   </td><td style="text-align: right;">             0.190633   </td></tr>
+<tr><td style="text-align: right;">       3</td><td style="text-align: right;">              0.185369   </td><td style="text-align: right;">             0.187568   </td></tr>
+<tr><td style="text-align: right;">       4</td><td style="text-align: right;">              0.15666    </td><td style="text-align: right;">             0.152331   </td></tr>
+<tr><td style="text-align: right;">       5</td><td style="text-align: right;">              0.104786   </td><td style="text-align: right;">             0.111841   </td></tr>
+<tr><td style="text-align: right;">       6</td><td style="text-align: right;">              0.0574172  </td><td style="text-align: right;">             0.0577807  </td></tr>
+<tr><td style="text-align: right;">       7</td><td style="text-align: right;">              0.0284611  </td><td style="text-align: right;">             0.0286715  </td></tr>
+<tr><td style="text-align: right;">       8</td><td style="text-align: right;">              0.011335   </td><td style="text-align: right;">             0.0133508  </td></tr>
+<tr><td style="text-align: right;">       9</td><td style="text-align: right;">              0.00376182 </td><td style="text-align: right;">             0.00503392 </td></tr>
+<tr><td style="text-align: right;">      10</td><td style="text-align: right;">              0.00173242 </td><td style="text-align: right;">             0.00175093 </td></tr>
+<tr><td style="text-align: right;">      11</td><td style="text-align: right;">              0.000742464</td><td style="text-align: right;">             0.000218866</td></tr>
+<tr><td style="text-align: right;">      12</td><td style="text-align: right;">              0.000247488</td><td style="text-align: right;">             0          </td></tr>
+<tr><td style="text-align: right;">      13</td><td style="text-align: right;">              9.89952e-05</td><td style="text-align: right;">             0          </td></tr>
+<tr><td style="text-align: right;">      14</td><td style="text-align: right;">              4.94976e-05</td><td style="text-align: right;">             0          </td></tr>
+</tbody>
+</table>
+
+After conducting our permutation analysis, p value was 0.704, and observed TVD was 0.015, we have reason to state that the missingness is not dependent on the amount of deaths. This can be supported with the distribution graph below. Hence, we are going to claim missingness here Missing Completely at Random. 
+
+<iframe
+  src="assets/TVD2.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+Alternatively, we see here that herald capture rate is not dependent on the amount of deaths a champions may have. Logically speaking, we may assume poor performance means there is a smaller likelihood of capturing objectives. However, these deaths may occur when the game exits the laning phase. Hence, there is a sound argument to believe that herald captures is not dependent on the deaths a laner may have.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
