@@ -15,6 +15,7 @@ Because this move is quite literally unstoppable, it has the power to influence 
 src="https://www.youtube.com/embed/dQGwo_MA_3c?si=OwPtOWG0xlDqKKEo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
 </iframe>
 
+
 Now that I have established Malphite is not fair, it is necessary to narrow down what type of Data is relevant for analysis. What we are trying to answer is what is the predicted amount of total objectives (dragons, heralds, barons, towards, inhibitors, etc.) that a team will get based off the existence of an "effective" Malphite?
 
 As for individual statistics, we will examine, the damage charts, damage taken charts, the vision score charts, the cs charts, the kills charts, the deaths charts, and the assist charts.
