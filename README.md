@@ -30,26 +30,36 @@ As for individual statistics, we will examine, the damage, damage taken, the vis
 
 ## Cleaning and EDA
 
-| gameid                | teamname                      | is_malphite   | champion   |   result |   kills |   deaths |   assists |   damagetochampions |   visionscore |   total cs |   totalgold |   damagetaken | Champ Type   |
-|:----------------------|:------------------------------|:--------------|:-----------|---------:|--------:|---------:|----------:|--------------------:|--------------:|-----------:|------------:|--------------:|:-------------|
-| ESPORTSTMNT01_2690210 | Fredit BRION Challengers      | False         | Renekton   |        0 |       2 |        3 |         2 |               15768 |            26 |        231 |       10934 |         30617 | AD           |
-| ESPORTSTMNT01_2690210 | Nongshim RedForce Challengers | False         | Gragas     |        1 |       1 |        1 |        12 |               17455 |            30 |        229 |       10001 |         26034 | AP           |
-| ESPORTSTMNT01_2690219 | T1 Challengers                | False         | Gragas     |        0 |       0 |        5 |         2 |                9484 |            28 |        245 |       11076 |         30754 | AP           |
-| ESPORTSTMNT01_2690219 | Liiv SANDBOX Challengers      | False         | Gangplank  |        1 |       2 |        2 |         6 |               23632 |            30 |        341 |       17877 |         17752 | AD           |
-| 8401-8401_game_1      | Oh My God                     | False         | Gwen       |        1 |       5 |        0 |         4 |               11188 |            23 |        172 |        9123 |         13327 | AP           | 
+<table style ="width:400px; height:200px; border 1px">
+<thead>
+<tr><th>is_malphite  </th><th>champion  </th><th style="text-align: right;">  result</th><th style="text-align: right;">  kills</th><th style="text-align: right;">  deaths</th><th style="text-align: right;">  assists</th><th style="text-align: right;">  damagetochampions</th><th style="text-align: right;">  visionscore</th><th style="text-align: right;">  total cs</th><th style="text-align: right;">  totalgold</th><th style="text-align: right;">  damagetaken</th></tr>
+</thead>
+<tbody>
+<tr><td>False        </td><td>Renekton  </td><td style="text-align: right;">       0</td><td style="text-align: right;">      2</td><td style="text-align: right;">       3</td><td style="text-align: right;">        2</td><td style="text-align: right;">              15768</td><td style="text-align: right;">           26</td><td style="text-align: right;">       231</td><td style="text-align: right;">      10934</td><td style="text-align: right;">        30617</td></tr>
+<tr><td>False        </td><td>Gragas    </td><td style="text-align: right;">       1</td><td style="text-align: right;">      1</td><td style="text-align: right;">       1</td><td style="text-align: right;">       12</td><td style="text-align: right;">              17455</td><td style="text-align: right;">           30</td><td style="text-align: right;">       229</td><td style="text-align: right;">      10001</td><td style="text-align: right;">        26034</td></tr>
+<tr><td>False        </td><td>Gragas    </td><td style="text-align: right;">       0</td><td style="text-align: right;">      0</td><td style="text-align: right;">       5</td><td style="text-align: right;">        2</td><td style="text-align: right;">               9484</td><td style="text-align: right;">           28</td><td style="text-align: right;">       245</td><td style="text-align: right;">      11076</td><td style="text-align: right;">        30754</td></tr>
+<tr><td>False        </td><td>Gangplank </td><td style="text-align: right;">       1</td><td style="text-align: right;">      2</td><td style="text-align: right;">       2</td><td style="text-align: right;">        6</td><td style="text-align: right;">              23632</td><td style="text-align: right;">           30</td><td style="text-align: right;">       341</td><td style="text-align: right;">      17877</td><td style="text-align: right;">        17752</td></tr>
+<tr><td>False        </td><td>Gwen      </td><td style="text-align: right;">       1</td><td style="text-align: right;">      5</td><td style="text-align: right;">       0</td><td style="text-align: right;">        4</td><td style="text-align: right;">              11188</td><td style="text-align: right;">           23</td><td style="text-align: right;">       172</td><td style="text-align: right;">       9123</td><td style="text-align: right;">        13327</td></tr>
+</tbody>
+</table>
 
 
 At this point, we have subset data our anaysis purposes. However, I would like to take one step further and classify each champion based off of the "type" of champion they are.
 - For example, Malphite is a Tank Champion, Vayne is an AD (Attack Damage) Champion, and Lilia is an AP (Ability Power) Champion.
 - However, this is an subjective classification based off of the typical build path of the Season 12 Meta. 
 
-| gameid                | teamname                      | is_malphite   | champion   |   result |   kills |   deaths |   assists |   damagetochampions |   visionscore |   total cs |   totalgold |   damagetaken | Champ Type   |
-|:----------------------|:------------------------------|:--------------|:-----------|---------:|--------:|---------:|----------:|--------------------:|--------------:|-----------:|------------:|--------------:|:-------------|
-| ESPORTSTMNT01_2690210 | Fredit BRION Challengers      | False         | Renekton   |        0 |       2 |        3 |         2 |               15768 |            26 |        231 |       10934 |         30617 | AD           |
-| ESPORTSTMNT01_2690210 | Nongshim RedForce Challengers | False         | Gragas     |        1 |       1 |        1 |        12 |               17455 |            30 |        229 |       10001 |         26034 | AP           |
-| ESPORTSTMNT01_2690219 | T1 Challengers                | False         | Gragas     |        0 |       0 |        5 |         2 |                9484 |            28 |        245 |       11076 |         30754 | AP           |
-| ESPORTSTMNT01_2690219 | Liiv SANDBOX Challengers      | False         | Gangplank  |        1 |       2 |        2 |         6 |               23632 |            30 |        341 |       17877 |         17752 | AD           |
-| 8401-8401_game_1      | Oh My God                     | False         | Gwen       |        1 |       5 |        0 |         4 |               11188 |            23 |        172 |        9123 |         13327 | AP           |
+<table style="width:400px; height:200px; border 1px">
+<thead>
+<tr><th>is_malphite  </th><th>champion  </th><th style="text-align: right;">  result</th><th style="text-align: right;">  kills</th><th style="text-align: right;">  deaths</th><th style="text-align: right;">  assists</th><th style="text-align: right;">  damagetochampions</th><th style="text-align: right;">  visionscore</th><th style="text-align: right;">  total cs</th><th style="text-align: right;">  totalgold</th><th style="text-align: right;">  damagetaken</th><th>Champ Type  </th></tr>
+</thead>
+<tbody>
+<tr><td>False        </td><td>Renekton  </td><td style="text-align: right;">       0</td><td style="text-align: right;">      2</td><td style="text-align: right;">       3</td><td style="text-align: right;">        2</td><td style="text-align: right;">              15768</td><td style="text-align: right;">           26</td><td style="text-align: right;">       231</td><td style="text-align: right;">      10934</td><td style="text-align: right;">        30617</td><td>AD          </td></tr>
+<tr><td>False        </td><td>Gragas    </td><td style="text-align: right;">       1</td><td style="text-align: right;">      1</td><td style="text-align: right;">       1</td><td style="text-align: right;">       12</td><td style="text-align: right;">              17455</td><td style="text-align: right;">           30</td><td style="text-align: right;">       229</td><td style="text-align: right;">      10001</td><td style="text-align: right;">        26034</td><td>AP          </td></tr>
+<tr><td>False        </td><td>Gragas    </td><td style="text-align: right;">       0</td><td style="text-align: right;">      0</td><td style="text-align: right;">       5</td><td style="text-align: right;">        2</td><td style="text-align: right;">               9484</td><td style="text-align: right;">           28</td><td style="text-align: right;">       245</td><td style="text-align: right;">      11076</td><td style="text-align: right;">        30754</td><td>AP          </td></tr>
+<tr><td>False        </td><td>Gangplank </td><td style="text-align: right;">       1</td><td style="text-align: right;">      2</td><td style="text-align: right;">       2</td><td style="text-align: right;">        6</td><td style="text-align: right;">              23632</td><td style="text-align: right;">           30</td><td style="text-align: right;">       341</td><td style="text-align: right;">      17877</td><td style="text-align: right;">        17752</td><td>AD          </td></tr>
+<tr><td>False        </td><td>Gwen      </td><td style="text-align: right;">       1</td><td style="text-align: right;">      5</td><td style="text-align: right;">       0</td><td style="text-align: right;">        4</td><td style="text-align: right;">              11188</td><td style="text-align: right;">           23</td><td style="text-align: right;">       172</td><td style="text-align: right;">       9123</td><td style="text-align: right;">        13327</td><td>AP          </td></tr>
+</tbody>
+</table>
 
 
 These are the team level objectives we will be examining:
@@ -59,6 +69,22 @@ These are the team level objectives we will be examining:
 - Towers
 - Inhibitors
 - Total Objectives (Sum of the 5 above)
+
+<table style="width:400px; height:200px; border 1px">
+<thead>
+<tr><th style="text-align: right;">  </th><th>gameid               </th><th>teamname                     </th><th style="text-align: right;">  dragons</th><th style="text-align: right;">  heralds</th><th style="text-align: right;">  barons</th><th style="text-align: right;">  towers</th><th style="text-align: right;">  inhibitors</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: right;">10</td><td>ESPORTSTMNT01_2690210</td><td>Fredit BRION Challengers     </td><td style="text-align: right;">        1</td><td style="text-align: right;">        2</td><td style="text-align: right;">       0</td><td style="text-align: right;">       3</td><td style="text-align: right;">           0</td></tr>
+<tr><td style="text-align: right;">11</td><td>ESPORTSTMNT01_2690210</td><td>Nongshim RedForce Challengers</td><td style="text-align: right;">        3</td><td style="text-align: right;">        0</td><td style="text-align: right;">       0</td><td style="text-align: right;">       6</td><td style="text-align: right;">           1</td></tr>
+<tr><td style="text-align: right;">22</td><td>ESPORTSTMNT01_2690219</td><td>T1 Challengers               </td><td style="text-align: right;">        1</td><td style="text-align: right;">        1</td><td style="text-align: right;">       0</td><td style="text-align: right;">       3</td><td style="text-align: right;">           0</td></tr>
+<tr><td style="text-align: right;">23</td><td>ESPORTSTMNT01_2690219</td><td>Liiv SANDBOX Challengers     </td><td style="text-align: right;">        4</td><td style="text-align: right;">        1</td><td style="text-align: right;">       2</td><td style="text-align: right;">      11</td><td style="text-align: right;">           2</td></tr>
+<tr><td style="text-align: right;">34</td><td>8401-8401_game_1     </td><td>Oh My God                    </td><td style="text-align: right;">        2</td><td style="text-align: right;">        0</td><td style="text-align: right;">       1</td><td style="text-align: right;">       8</td><td style="text-align: right;">           1</td></tr>
+</tbody>
+</table>
+
+
+So to predict the if Malphite has an influence on objective play, we need to narrow down the cases where malphite was played and not played. Then, we select the player level data as we mentioned in the introduction for the two relevant datasets. However, to ensure we can predict the value of the objectives, we need to attribute team level data to the players. But as this is only displayed in the last 2 rows of each subset, we can merge this data based off of the gameid and teamname. But to make sure the merge function does not mess with our dataset, we drop every duplicate based off of gameid or both gameid and teamname.
 
 <table style="width: 50%; border-collapse: collapse;">
 <thead>
@@ -72,6 +98,3 @@ These are the team level objectives we will be examining:
 <tr><td>False        </td><td>Gwen      </td><td style="text-align: right;">       1</td><td style="text-align: right;">      5</td><td style="text-align: right;">       0</td><td style="text-align: right;">        4</td><td style="text-align: right;">              11188</td><td style="text-align: right;">           23</td><td style="text-align: right;">       172</td><td style="text-align: right;">       9123</td><td style="text-align: right;">        13327</td><td>AP          </td><td style="text-align: right;">        2</td><td style="text-align: right;">        0</td><td style="text-align: right;">       1</td><td style="text-align: right;">       8</td><td style="text-align: right;">           1</td><td style="text-align: right;">          12</td></tr>
 </tbody>
 </table>
-
-So to predict the if Malphite has an influence on objective play, we need to narrow down the cases where malphite was played and not played. Then, we select the player level data as we mentioned in the introduction for the two relevant datasets. However, to ensure we can predict the value of the objectives, we need to attribute team level data to the players. But as this is only displayed in the last 2 rows of each subset, we can merge this data based off of the gameid and teamname. But to make sure the merge function does not mess with our dataset, we drop every duplicate based off of gameid or both gameid and teamname.
-
