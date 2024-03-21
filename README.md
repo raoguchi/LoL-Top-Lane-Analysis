@@ -31,6 +31,14 @@ As for individual statistics, we will examine, the damage, damage taken, the vis
 
 ## Cleaning and EDA
 
+<style>
+table {
+    width: 50%; /* Adjust the width as needed */
+    margin-left: auto;
+    margin-right: auto;
+}
+</style>
+
 | gameid                | teamname                      | is_malphite   | champion   |   result |   kills |   deaths |   assists |   damagetochampions |   visionscore |   total cs |   totalgold |   damagetaken | Champ Type   |
 |:----------------------|:------------------------------|:--------------|:-----------|---------:|--------:|---------:|----------:|--------------------:|--------------:|-----------:|------------:|--------------:|:-------------|
 | ESPORTSTMNT01_2690210 | Fredit BRION Challengers      | False         | Renekton   |        0 |       2 |        3 |         2 |               15768 |            26 |        231 |       10934 |         30617 | AD           |
