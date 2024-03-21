@@ -48,7 +48,7 @@ At this point, we have subset data our anaysis purposes. However, I would like t
 - For example, Malphite is a Tank Champion, Vayne is an AD (Attack Damage) Champion, and Lilia is an AP (Ability Power) Champion.
 - However, this is an subjective classification based off of the typical build path of the Season 12 Meta. 
 
-<div stle='overflow-x: auto;'>
+<div style='overflow-x: auto;'>
 <table style="width:100px; height:200px; border:1px">
 <thead>
 <tr><th>is_malphite  </th><th>champion  </th><th style="text-align: right;">  result</th><th style="text-align: right;">  kills</th><th style="text-align: right;">  deaths</th><th style="text-align: right;">  assists</th><th style="text-align: right;">  damagetochampions</th><th style="text-align: right;">  visionscore</th><th style="text-align: right;">  total cs</th><th style="text-align: right;">  totalgold</th><th style="text-align: right;">  damagetaken</th><th>Champ Type  </th></tr>
