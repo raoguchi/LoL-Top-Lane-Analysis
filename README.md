@@ -39,7 +39,7 @@ table {
 }
 </style>
 
-<table>
+
 | gameid                | teamname                      | is_malphite   | champion   |   result |   kills |   deaths |   assists |   damagetochampions |   visionscore |   total cs |   totalgold |   damagetaken | Champ Type   |
 |:----------------------|:------------------------------|:--------------|:-----------|---------:|--------:|---------:|----------:|--------------------:|--------------:|-----------:|------------:|--------------:|:-------------|
 | ESPORTSTMNT01_2690210 | Fredit BRION Challengers      | False         | Renekton   |        0 |       2 |        3 |         2 |               15768 |            26 |        231 |       10934 |         30617 | AD           |
@@ -47,7 +47,7 @@ table {
 | ESPORTSTMNT01_2690219 | T1 Challengers                | False         | Gragas     |        0 |       0 |        5 |         2 |                9484 |            28 |        245 |       11076 |         30754 | AP           |
 | ESPORTSTMNT01_2690219 | Liiv SANDBOX Challengers      | False         | Gangplank  |        1 |       2 |        2 |         6 |               23632 |            30 |        341 |       17877 |         17752 | AD           |
 | 8401-8401_game_1      | Oh My God                     | False         | Gwen       |        1 |       5 |        0 |         4 |               11188 |            23 |        172 |        9123 |         13327 | AP           |
-</table>
+|<img width=200/>|<img width=500/>|
 
 At this point, we have subset data our anaysis purposes. However, I would like to take one step further and classify each champion based off of the "type" of champion they are.
 - For example, Malphite is a Tank Champion, Vayne is an AD (Attack Damage) Champion, and Lilia is an AP (Ability Power) Champion.
