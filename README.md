@@ -14,9 +14,7 @@ As described in the official League of Legends Website, it is described as follo
 
 Because this move is quite literally unstoppable, it has the power to influence individual match-ups and team fights into one-sided affairs.
 
-<iframe width="560" height="315" 
-src="https://youtu.be/Rgta7WDz3JE?si=O4Yw_rGTQIysFXpz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
-</iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Rgta7WDz3JE?si=O4Yw_rGTQIysFXpz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 Now that I have established Malphite is not fair, it is necessary to narrow down what type of Data is relevant for analysis. What we are trying to answer is what is the predicted amount of total objectives (dragons, heralds, barons, towards, inhibitors, etc.) that a team will get based off the existence of an "effective" Malphite?
