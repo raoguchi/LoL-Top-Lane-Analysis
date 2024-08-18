@@ -15,7 +15,7 @@ As described in the official League of Legends Website, it is described as follo
 Because this move is quite literally unstoppable, it has the power to influence individual match-ups and team fights into one-sided affairs.
 
 <iframe width="560" height="315" 
-src="https://www.youtube.com/embed/dQGwo_MA_3c?si=OwPtOWG0xlDqKKEo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+src="https://youtu.be/Rgta7WDz3JE?si=O4Yw_rGTQIysFXpz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
 </iframe>
 
 
